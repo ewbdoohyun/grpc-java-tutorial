@@ -1,0 +1,59 @@
+syntax = "proto3";
+
+package proto.chat;
+import "google/protobuf/timestamp.proto";
+
+
+option java_package = "proto.chat";
+option java_multiple_files = true;
+
+
+service Chat {
+  rpc addUser(AddUserRequest) returns(AddUserResponse);
+  // connection remove가 필요한지?
+  rpc removeUser(AddUserRequest) returns(RemoveUserResponse);
+  rpc Chat(stream ChatRequest) returns(stream ChatResponse);
+
+}
+
+message AddUserResponse{
+
+}
+message RemoveUserResponse{
+
+}
+
+
+
+message AddUserRequest {
+  string user_id = 1;
+  repeated string chat_room_id = 2;
+  string display_name = 3;
+}
+message ChatRequest{
+  string user_id = 1;
+  string chat_room_id = 2;
+  string message =3;
+}
+
+message ChatResponse{
+  google.protobuf.Timestamp  timestamp =1;
+  oneof event{
+    Login role_login = 2;
+    Logout role_logout=3;
+    Message role_message=4;
+    ShutDown server_shutdown=5;
+  }
+  message Login{
+    string name = 1;
+  }
+  message Logout{
+    string name=1;
+  }
+  message Message{
+    string user_id = 1;
+    string chat_room_id = 2;
+    string msg = 3;
+  }
+  message ShutDown{}
+}
