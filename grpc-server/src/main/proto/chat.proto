@@ -7,33 +7,26 @@ import "google/protobuf/timestamp.proto";
 option java_package = "proto.chat";
 option java_multiple_files = true;
 
-
-service Chat {
-  rpc addUser(AddUserRequest) returns(AddUserResponse);
-  // connection remove가 필요한지?
-  rpc removeUser(AddUserRequest) returns(RemoveUserResponse);
+service ChatRoom {
+  rpc AddUser(AddUserRequest) returns(AddUserResponse);
   rpc Chat(stream ChatRequest) returns(stream ChatResponse);
 
 }
 
-message AddUserResponse{
-
-}
-message RemoveUserResponse{
-
-}
-
-
+message AddUserResponse{}
+message RemoveUserResponse{}
 
 message AddUserRequest {
   string user_id = 1;
-  repeated string chat_room_id = 2;
+  string chat_room_id = 2;
   string display_name = 3;
 }
+
 message ChatRequest{
   string user_id = 1;
   string chat_room_id = 2;
   string message =3;
+  string type = 4;
 }
 
 message ChatResponse{

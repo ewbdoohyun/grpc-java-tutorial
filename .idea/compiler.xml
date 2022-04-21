@@ -11,7 +11,7 @@
         <module name="grpc-java-tutorial.grpc-client.main" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="11">
+    <bytecodeTargetLevel target="1.8">
       <module name="grpc-java-tutorial.grpc-interface.main" target="17" />
       <module name="grpc-java-tutorial.grpc-interface.test" target="17" />
     </bytecodeTargetLevel>

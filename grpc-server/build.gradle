@@ -13,11 +13,9 @@ plugins {
     id 'java'
 }
 
-//apply plugin:  "com.google.protobuf"
-
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
+sourceCompatibility = '8'
 
 repositories {
     mavenCentral()
@@ -28,7 +26,6 @@ dependencies {
 
     implementation 'org.springframework.boot:spring-boot-starter'
     implementation 'net.devh:grpc-server-spring-boot-starter:2.12.0.RELEASE'
-//    implementation files('libs/GrpcInterface-1.0-SNAPSHOT.jar')
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
     implementation "io.grpc:grpc-protobuf:${grpcVersion}"
